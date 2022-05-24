@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro Administracion</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/formularios.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+
+<body>
+
+<nav th:replace="fragments/nav :: nav"></nav>
+    
+      <p th:if="${error != null}" th:text="${error}" class="error">Usted cometio un error en algo</p>
+    <h1>Formulario para registrar un Libro</h1>
+    <form class="formularioModificacion" action="/registrarLibro" method="post">
+
+        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+        
+        <label for="isbn">ISBN</label><br>
+        <input type="number" name="isbn" class="input" th:value="${isbn}" required id="separacion"><br>
+
+        <label for="titulo">Titulo</label><br>
+        <input type="text" name="titulo" class="input" th:value="${titulo}" id="separacion"><br>
+
+        <label for="anio">Año</label><br>
+        <input type="number" name="anio" class="input" th:value="${anio}" required id="separacion"><br>
+
+        <label for="ejemplares">Ejemplares</label><br>
+        <input type="number" name="ejemplares" class="input" th:value="${ejemplares}" required id="separacion"><br>
+
+        <label for="ejemplaresPrest">Ejemplares prestados</label><br>
+        <input type="number" name="ejemplaresPrest" class="input" th:value="${ejemplaresPrest}" required id="separacion"><br>
+
+        <label for="autor">Autor</label><br>
+        <input type="text" name="autor" class="input" th:value="${autor}" required id="separacion"><br>
+
+        <label for="editorial">Editorial</label><br>
+        <input type="text" name="editorial" class="input" th:value="${editorial}" required id="separacion"><br>
+
+        <button type="submit" ><b>Enviar info</b></button>
+    </form>
+    <div class="inicio">
+        <a th:href="@{/}" >IR A INICIO</a>
+    </div>
+</body>
+
+</html>

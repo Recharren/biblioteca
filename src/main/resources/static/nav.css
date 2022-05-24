@@ -1,0 +1,36 @@
+
+nav {
+    margin: auto 0px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: rgba(89, 177, 176, 0.4);
+}
+
+.nav_contenedor{
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+a{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color:white;
+}
+
+p{
+    font-size: larger;
+    
+    }
+.logo{
+    margin-right: 80rem;
+}
+
+.login{
+    margin: 0 1rem;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 0.3em 0.6em;
+    border-radius: 15px;
+}

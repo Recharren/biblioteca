@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Libros</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="listados.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+    <header>
+        <h1>Listado de Libros</h1>
+    </header> 
+    <div>
+      <a href="/cargarLibrosEjemplos">Cargar libros de ejemplo</a>
+    </div>
+    
+    <table  class="table" action="/listarLibros" method="GET">
+        <thead>
+          <tr>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"># ID</th>
+            <th scope="col" >ISBN</th>
+            <th scope="col" >Titulo</th>
+            <th scope="col" >Año</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Ejemplares</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')" >E.Prestados</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')" >E.Restantes</th>
+            <th scope="col" >Autor</th>
+            <th scope="col" >Editorial</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Está activo?</th>
+            <th scope="col" th:if="${session.usuariosession}!=null" style="width: 120px" >Acciones</th>
+          </tr>
+        </thead>
+        <tbody th:each="libro: ${libros}">
+          <tr>
+            <th scope="row" th:text="${libro.id}"  sec:authorize="hasRole('ROLE_ADMIN')"></th>
+            <td th:text="${libro.isbn}" ></td>
+            <td th:text="${libro.titulo}"></td>
+            <td th:text="${libro.anio}"></td>
+            <td th:text="${libro.ejemplares}" sec:authorize="hasRole('ROLE_ADMIN')"></td>
+            <td th:text="${libro.ejemplaresPrestados}" sec:authorize="hasRole('ROLE_ADMIN')"></td>
+            <td th:text="${libro.ejemplaresRestantes}" sec:authorize="hasRole('ROLE_ADMIN')"></td>
+            <td th:text="${libro.autor}"></td>
+            <td th:text="${libro.editorial}"></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <i th:if="${libro.alta}" ><img src="/img/tilde verde.png" alt="Habilitado" class="simbolo"></i>
+                <i th:unless="${libro.alta}"><img src="/img/equis roja.png" alt="Deshabilitado" class="simbolo"></i>
+            </td>   
+            <td th:if="${session.usuariosession}!=null">
+                <div class="acciones">
+                    <a th:href="@{/altaLibro/__${libro.id}__}" sec:authorize="hasRole('ROLE_ADMIN')"> <img src="/img/FlechaArriba.png" title="Dar de alta" style="width: 25px;"></a>
+                    <a th:href="@{/bajaLibro/__${libro.id}__}" sec:authorize="hasRole('ROLE_ADMIN')"><img src="/img/FlechaAbajo.png" title="Dar de baja" style="width: 25px;"></a>
+                    <a th:href="@{/listarLibro/__${libro.id}__}" sec:authorize="hasRole('ROLE_ADMIN')"><img src="/img/editar.png" title="Editar" style="width: 25px;"></a>
+                    <a th:href="@{/crearPrestamoUsuario/__${libro.id}__}" ><img src="/img/Manito.svg" alt="reservar" title="Reservar libro" style="width: 25px;"></a>
+                </div >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:greenyellow;"></p>
+    <p th:if="${exito != null}" th:text="${exito}" style="color:greenyellow;"></p>
+    <p th:if="${error!= null}" th:text="${error}" style="color:red;"></p>
+    <br>
+    <div class="inicio">
+      <a th:href="@{/}" >IR A INICIO</a>
+  </div>
+
+      
+</body>
+</html>

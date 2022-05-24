@@ -1,0 +1,69 @@
+
+body {
+    background-image: url(../img/Bibliotecas_fondo.jpg);
+    font-family:  sans-serif;
+    background-size: cover;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+h1{
+    font-size: 300;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+
+
+
+
+.formulario{
+    background-color: rgba(89, 177, 176, 0.4);
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 40px auto 10px;
+    height: 350px;
+    text-align: center;
+    width: 30%;
+    padding: 5px; 
+}
+#separacion, input{
+    margin: 5px;
+    padding: 3px;
+}
+h3{
+    font-size: 1.3em;
+    display: inline-block;
+}
+
+
+.formularioModificacion{
+    background-color: rgba(89, 177, 176, 0.4);
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 40px auto;
+    
+    text-align: center;
+    width: 20%;
+    padding: 10px; 
+}
+
+button{
+    font-size: 1.3em;
+    display: inline-block;
+    color: white;
+    border: 2px solid black;
+    padding: 5px 10px;
+    border-radius: 13px;
+    background-color: rgb(89, 177, 176);
+}
+
+label{
+font-size: 1.3em;
+margin: 10px;
+}
+

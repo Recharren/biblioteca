@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Crear prestamo usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/normalize.css">
+        <link rel="stylesheet" href="/prestamo.css">
+        <link rel="stylesheet" href="/nav.css">
+        <link rel="stylesheet" href="/botonInicio.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Formulario para registrar un Prestamo</h1>
+        </div> 
+       
+        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+        
+        
+    <form class="formulario" th:action="@{/registrarPrestamo}" method="post">
+
+        
+        <div class="input_dni">
+            <label for="dni">DNI del usuario</label><br>
+            <input type="number" name="dni" class="input"><br>
+        </div>
+        <div class="input_fechaPrestamo">
+            <label for="fechaPrestamo">Fecha de prestamo</label><br>
+        <input type="date" pattern="dd-MM-yyyy" name="fechaPrestamo" class="input" th:value="${fechaPrestamo}"><br>
+        </div>
+        <div class="input_fechaDevolucion">
+            <label for="fechaDevolucion">Fecha de devolucion</label><br>
+        <input type="date" pattern="dd-MM-yyyy" name="fechaDevolucion" class="input" th:value="${fechaDevolucion}"><br>
+        </div>
+        
+        <button class="enviar" type="submit"><b>Enviar info</b></button>
+
+        <div class="inicio">
+            <a th:href="@{/}" >IR A INICIO</a>
+        </div>
+    </form>
+    </body>
+</html>

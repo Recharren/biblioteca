@@ -1,0 +1,10 @@
+<nav>
+        <a href="/"><img class="logo" src="/img/BPGSM-100.png" title="Logo" alt="Logo biblioteca" style="width: 250px;"></a>
+        <div class="nav_contenedor">
+            <p th:if="${session.usuariosession}!=null"th:text="${session.usuariosession.nombre}" ><p sec:authorize="hasRole('ROLE_ADMIN')"> (Admin)</p></p>    
+            <a class="manito" th:if="${session.usuariosession}!=null" th:href="@{/listarPrestamosPorUsuario/__${session.usuariosession.id}__}" sec:authorize="hasRole('ROLE_USUARIO')" ><img src="/img/libritosBlancos.png" title="Mis prestamos" alt="prestamos" style="width: 25px;"></a>   
+            <a class="login" th:href="@{/usar}" >Como Usar?</a>
+            <a class="login" th:href="@{/login}" th:if="${session.usuariosession}==null" >Login</a>
+            <a class="login" th:href="@{/logout}" th:unless="${session.usuariosession}==null">Logout</a>
+        </div>
+    </nav>

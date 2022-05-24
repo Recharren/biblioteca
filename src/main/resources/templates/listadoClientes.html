@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Editoriales</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="listados.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+    <header>
+        <h1>Listado de Clientes</h1>
+    </header> 
+     <table class="table" action="/listarClientes" method="GET">
+        <thead>
+          <tr>
+            <th scope="col"># ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Está activo?</th>
+            <th scope="col">Acciones</th>
+            
+          </tr>
+        </thead>
+        <tbody th:each="cliente: ${clientes}">
+          <tr>
+            <th scope="row" th:text="${cliente.id}"></th>
+            <td th:text="${cliente.nombre}"></td>
+            <td th:text="${cliente.apellido}"></td>
+            <td th:text="${cliente.telefono}"></td>
+            <td th:text="${cliente.documento}"></td>
+            <td th:text="${cliente.email}"></td>
+            <td th:text="${cliente.rol}"></td>
+            <td>
+                <i th:if="${cliente.alta}"><img src="/img/tilde verde.png" alt="Habilitado" class="simbolo"></i>
+                <i th:unless="${cliente.alta}" ><img src="/img/equis roja.png" alt="Deshabilitado" class="simbolo"></i>
+            </td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a th:href="@{/altaCliente/__${cliente.id}__}"><img src="/img/FlechaArriba.png" title="Dar de alta" style="width: 25px;"></a>
+                    <a th:href="@{/bajaCliente/__${cliente.id}__}"><img src="/img/FlechaAbajo.png" title="Dar de baja" style="width: 25px;"></a>
+                    <a th:href="@{/listarCliente/__${cliente.id}__}"><img src="/img/editar.png" title="Editar" style="width: 25px;"></a>
+                </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:greenyellow;"></p>
+    <p th:if="${exito != null}" th:text="${exito}" style="color:greenyellow;"></p>
+    <br>
+    <div class="inicio">
+      <a th:href="@{/}" >IR A INICIO</a>
+  </div>
+</body>
+</html>

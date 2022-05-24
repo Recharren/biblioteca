@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro Modificacion</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/formularios.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+    <header>
+        <h1>Formulario para modificar un libro</h1>
+    </header> 
+    <form th:action="@{/modificarLibro}" method="post" class="formularioModificacion" style="margin: 20px auto">
+        <p th:if="${error != null}" th:text="${error}" style="color:red;" ></p>
+        
+       <input type="number" name="id" th:value="${libro.id}" hidden><br>
+        
+        <label for="isbn">Ingrese el nuevo isbn del libro.</label>
+        <input type="number" name="isbn" th:value="${libro.isbn}" id="separacion" required><br>
+        
+         <label for="titulo">Ingrese el nuevo titulo del libro.</label>
+        <input type="text" name="titulo" th:value="${libro.titulo}" id="separacion" required><br>
+        
+         <label for="anio">Ingrese el nuevo anio del libro.</label>
+        <input type="number" name="anio" th:value="${libro.anio}" id="separacion" required><br>
+        
+         <label for="ejemplares">Ingrese la nueva cantidad de ejemplares.</label>
+        <input type="number" name="ejemplares" th:value="${libro.ejemplares}" id="separacion" required><br>
+        
+         <label for="ejemplaresPrestados">Ingrese la nueva cantidad de ejemplares prestados.</label>
+        <input type="number" name="ejemplaresPrestados" th:value="${libro.ejemplaresPrestados}" id="separacion" required><br>
+        
+         <label for="autor">Ingrese el nuevo autor del libro</label>
+        <input type="text" name="autor" th:value="${libro.autor}" id="separacion" required><br>
+        
+         <label for="editorial">Ingrese la nueva editorial del libro</label>
+        <input type="text" name="editorial" th:value="${libro.editorial}" id="separacion" required><br>
+
+        <button type="submit" class="button_submit">Actualizar informacion</button>
+        
+    </form>
+    <div class="inicio">
+        <a th:href="@{/}" >IR A INICIO</a>
+    </div>
+</body>
+</html>

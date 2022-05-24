@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Préstamos</title>
+    <link rel="stylesheet" href="../normalize.css">
+    <link rel="stylesheet" href="../listados.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+
+<nav th:replace="fragments/nav :: nav"></nav>
+  <h1>Información de sus préstamos</h1>
+  <p th:if="${error != null}" th:text="${error}" class="error"></p>
+  <table class="table" action="/listarPrestamos" method="GET">
+        <thead>
+          <tr>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"># ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Libro</th>
+            <th scope="col">Fecha Prestamo</th>
+            <th scope="col">Fecha Devolucion</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Está activo?</th>
+            <th scope="col" >Acciones</th>
+            
+          </tr>
+        </thead>
+        <tbody th:each="prestamo: ${prestamos}">
+          <tr>
+            <th scope="row" th:text="${prestamo.id}" sec:authorize="hasRole('ROLE_ADMIN')"></th>
+            <td th:text="${prestamo.cliente.nombre}"></td>
+            <td th:text="${prestamo.libro}"></td>
+            <td th:text="${prestamo.fechaPrestamo}"></td>
+            <td th:text="${prestamo.fechaDevolucion}"></td>
+            
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <i th:if="${prestamo.alta}" ><img src="/img/tilde verde.png" alt="Habilitado" class="simbolo"></i>
+                <i th:unless="${prestamo.alta}"><img src="/img/equis roja.png" alt="Deshabilitado" class="simbolo"></i>
+            </td>
+            <td>
+                <div >
+                    <a th:href="@{/altaPrestamo/__${prestamo.id}__}" sec:authorize="hasRole('ROLE_ADMIN')"><img src="/img/FlechaArriba.png" title="Dar de alta" class="simbolo"></a>
+                    <a th:href="@{/bajaPrestamo/__${prestamo.id}__}" sec:authorize="hasRole('ROLE_ADMIN')"><img src="/img/FlechaAbajo.png" title="Dar de baja" class="simbolo"></a>
+                    <a th:href="@{/listarPrestamo/__${prestamo.id}__}"><img src="/img/calendario.png" title="Modificar fecha" class="simbolo"></a>
+                </div>
+
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    
+    <div class="inicio">
+      <a th:href="@{/}" >IR A INICIO</a>
+  </div>
+
+     </body>
+</html>

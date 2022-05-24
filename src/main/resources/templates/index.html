@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria Home</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/desplegable.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/nav.css">
+    
+</head>
+<body>
+
+<nav th:replace="fragments/nav :: nav"></nav>
+    <section>
+        <div class="titulo">
+            <h1>Biblioteca <br> General San Martín</h1>
+        </div>
+        <div class="descripcion">
+            <p>Nuestra librería online permite <span>buscar tu libro favorito</span>  y reservarlo de manera simple, solo necesitas <span>registrarte</span> .</p>
+        </div>
+        <div class="registro">
+            <div id="menu" sec:authorize="hasRole('ROLE_ADMIN')"  >
+                <div  >
+                    <ul>
+                        <li><a href="">Libro</a>
+                            <ul>
+                                <li><a class="link" th:href="@{/libro.html}">Crear libros</a></li>
+                                <li><a class="link" th:href="@{/listarLibros}">Listar libros</a></li>
+                            </ul> 
+                        </li>
+                         <li><a href="">Cliente</a>
+                            <ul>
+                                <li><a class="link" th:href="@{/cliente.html}">Registrar Cliente</a></li>
+                                <li><a class="link" th:href="@{/listarClientes}">Listar Clientes</a></li>
+                            </ul> 
+                        </li>
+                        <li><a href="">Autores</a>
+                            <ul>
+                                <li><a class="link" th:href="@{/autor.html}">Crear autor</a></li>
+                                <li><a class="link" th:href="@{/listarAutores}">Listar autores</a></li>
+                            </ul> 
+                        </li>
+                        <li><a href="">Editoriales</a>
+                            <ul>
+                                <li><a class="link" th:href="@{/editorial.html}">Crear editorial</a></li>
+                                <li><a class="link" th:href="@{/listarEditoriales}">Listar editoriales</a></li>
+                            </ul> 
+                        </li>
+                        <li><a href="">Prestamos</a>
+                            <ul>
+                                <li><a class="link" th:href="@{/listarPrestamos}">Listar prestamos</a></li>
+                            </ul> 
+                        </li>
+                        
+                    </ul>
+                </div>
+            
+            </div>
+            <a  th:if="${session.usuariosession}==null"  href="cliente.html">Registrate</a>
+            <a  th:href="@{/listarLibros}">Nuestros libros</a>
+        </div>
+        <div class="buscador">
+            <form class="form"  action="/buscarLibro" method="post">
+                <select id="select"  name="filtro">
+                    <option value="0">Titulo</option>
+                    <option value="1">Autor</option>
+                </select>
+                <input id="input" type="text" name="palabra" placeholder="Ingrese su busqueda.">
+                <button id="submit" type="submit"><img src="img/lupa blanca.png" title="Buscar libro" alt="Buscar" style="width: 28px;"></button>
+            </form>
+        </div>
+    </section>
+    <p th:if="${mensaje != null}" th:text="${mensaje}" style="color:greenyellow;" class="error"> </p>
+    <p th:if="${error != null}" th:text="${error}" style="color:rgb(247, 206, 23);" class="error"></p>
+    <footer>
+        <div class="footer_info">
+            <a href="#nosotros">Nosotros</a>
+            <a href="#condiciones">Condiciones</a>
+            <a href="#politica">Politica</a>
+        </div>
+        <div class="footer_redes">
+            <a href="https://www.facebook.com/bibliotecapublicageneralsanmartin"><img src="img/facebook blanco.png" title="Facebook" alt="Facebook" style="width: 30px;"></a>
+            <a href="https://twitter.com/bpgsm_mza"><img src="img/twitter.png" title="Twitter" alt="Twitter" style="width: 30px;"></a>
+            <a href="https://www.instagram.com/bpgsm_mza/?hl=es"><img src="img/instagram blanco.png" title="Instagram" alt="Instagram" style="width: 30px;"></a>
+        </div>
+    
+    </footer>
+</body>
+</html>

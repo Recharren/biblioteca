@@ -1,0 +1,98 @@
+body {
+    background-image: url(../img/Bibliotecas_fondo.jpg);
+    font-family:  sans-serif;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    
+}
+
+nav {
+    margin: auto 0px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(89, 177, 176, 0.4);
+}
+
+.nav_contenedor{
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.logo{
+    margin-right: 80rem;
+}
+
+.login{
+    
+    margin: 0 1rem;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 5px 7px;
+    border-radius: 15px;
+}
+
+a{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color:white;
+}
+
+h1{
+    font-size: 250%;
+    font-family: sans-serif;
+}
+.error{
+    display: inline-block;
+    position: absolute;
+    width: 20%;
+    right: 40%;
+    top: 25%;
+    
+    color: rgb(247, 206, 23);
+    padding: 2px 10px;
+}
+
+.login-form{
+    background-color: rgba(89, 177, 176, 0.4);
+    height: 30vh;
+    width: 20%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.label{
+    font-size: larger;
+    padding-bottom: 3px;
+}
+
+input{
+    height: 1.8rem;
+    margin: 10px;
+}
+button{
+    font-size: 1.3em;
+    display: inline-block;
+    color: white;
+    border: 2px solid black;
+    padding: 5px 10px;
+    border-radius: 13px;
+    background-color: rgb(89, 177, 176);
+}
+button:hover{
+    border: 2px solid rgba(36, 73, 73, 0.4);
+}
+p{
+    font-size: 1.2rem;
+    display: inline-block;
+}
+.registrate{
+    color: rgba(255, 255, 255, 0.75);
+}
+.registrate:hover{
+    color: rgba(255, 255, 255, 1);
+}

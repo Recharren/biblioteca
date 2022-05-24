@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente modificacion</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/formularios.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+    <header>
+        <h1>Formulario para modificar un libro</h1>
+    </header> 
+    <form th:action="@{/modificarCliente}" method="post" class="formularioModificacion" style="margin: 10px auto">
+        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+        
+        <label for="nombre">Ingrese el nuevo nombre del cliente</label>
+        <input type="text" name="nombre" th:value="${cliente.nombre}"> <br>
+          <label for="apellido">Ingrese el nuevo apellido del cliente</label>
+        <input type="text" name="apellido" th:value="${cliente.apellido}"><br>
+          <label for="telefono">Ingrese el nuevo telefono del cliente</label>
+        <input type="text" name="telefono" th:value="${cliente.telefono}"><br>
+          <label for="documento">Ingrese el nuevo documento del cliente</label>
+        <input type="number" name="documento" th:value="${cliente.documento}">
+        
+        
+        <input type="number" name="id" th:value="${cliente.id}" hidden><br>
+        
+        
+
+        <button type="submit" class="button_submit">Actualizar informacion</button>
+       </form>
+       <div class="inicio">
+        <a th:href="@{/}" >IR A INICIO</a>
+    </div>
+</body>
+</html>

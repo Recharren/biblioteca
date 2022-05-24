@@ -1,0 +1,13 @@
+.inicio{
+    width: 8%;
+    text-align: center;
+    background-color: rgba(89, 177, 176, 0.4);
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 3px;
+    padding: 3px 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.inicio:hover{
+    border: 1px solid rgba(255, 255, 255, 1);
+}

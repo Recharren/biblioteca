@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registración</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+    <link rel="stylesheet" href="/formularios.css">
+   
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+    <h1>Complete con sus datos para registrarse</h1>
+    <p th:if="${error != null}" th:text="${error}" class="error"></p>
+   <form action="/registrarCliente" method="post" class="formularioModificacion">
+        
+       <label for="documento" >Documento</label><br>
+       <input type="number" name="documento" class="input" th:value="${documento}" required ><br>
+
+        <label for="nombre">Nombre</label><br>
+        <input type="text" name="nombre" class="input" th:value="${nombre}" required ><br>
+        
+        <label for="apellido">Apellido</label><br>
+        <input type="text" name="apellido" class="input" th:value="${apellido}" required ><br>
+        
+        <label for="telefono">Telefono</label><br>
+        <input type="text" name="telefono" class="input" th:value="${telefono}" required ><br>
+        
+        <label for="email">Email</label><br>
+        <input type="email" name="email" class="input" th:value="${email}" required ><br>
+        
+        <label for="clave">Clave (minimo 8 caracteres)</label><br>
+        <input type="password" name="clave" class="input" th:value="${clave}" required ><br>
+        
+        <label for="clave2">Repita Clave (deben ser iguales)</label><br>
+        <input type="password" name="clave2" class="input" th:value="${clave2}" required ><br><br>
+      
+        <button type="submit" ><b>Enviar info</b></button>
+        
+    </form>
+    <div class="inicio">
+        <a th:href="@{/}" >IR A INICIO</a>
+    </div>
+</body>
+</html>

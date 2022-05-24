@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamo modificacion</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/formularios.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+<nav th:replace="fragments/nav :: nav"></nav>
+    
+    <h1>Formulario para registrar un prestamo</h1>
+    <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+ <form th:action="@{/modificarPrestamo}" method="POST" class="formularioModificacion">
+        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+        
+         <input type="number" name="id" th:value="${prestamo.id}" hidden><br>
+       
+         <label for="fechadevolucion" >Nueva fecha de devolucion</label>
+         <input type="date" name="fechaDevolucion" ><br><br>
+
+        <button type="submit" class="button_submit">Actualizar informacion</button>
+</form>
+<div class="inicio">
+    <a th:href="@{/}" >IR A INICIO</a>
+</div>
+</body>
+</html>

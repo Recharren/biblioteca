@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial modificacion</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/formularios.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+    <header>
+        <h1>Formulario para modificar una Editorial</h1>
+    </header>
+    <form th:action="@{/modificarEditorial}" method="post" class="formularioModificacion">
+        <p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+        
+        <label for="nombre">Nuevo nombre de la Editorial</label>
+        <input type="text" name="nombre" th:value="${editorial.nombre}">
+
+        <input type="number" name="id" th:value="${editorial.id}" hidden><br>
+        
+        <button type="submit"><b>Actualizar informacion</b></button>
+    </form>
+    <div class="inicio">
+        <a th:href="@{/}" >IR A INICIO</a>
+    </div>
+</body>
+</html>

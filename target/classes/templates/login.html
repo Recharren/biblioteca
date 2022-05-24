@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/login.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/botonInicio.css">
+
+</head>
+<body>
+    <nav th:replace="fragments/nav :: nav"></nav>
+  
+    <h1>Inicio de sesión</h1>
+    <p th:if="${error != null}" th:text="${error}" class="error"></p>
+    <section  class="login-form">
+        <form action="/logincheck" method="post" class="form_login">
+            <label for="username" class="label">Email</label>
+            <input type="email" name="username" placeholder="usuario@ejemplo.com"> <br><br>
+            <label for="password" class="label">Clave</label>  
+            <input type="password" name="password" placeholder="Contraseña"><br>
+            <button type="submit">Iniciar sesión</button><br><br>
+        </form>
+        <p>No estás registrado?</p>
+        <a th:if="${session.usuariosession}==null" href="cliente.html" class="registrate">Registrate</a>
+    </section>
+
+    <div class="inicio">
+        <a th:href="@{/}" >IR A INICIO</a>
+    </div>
+    
+</body>
+</html>
